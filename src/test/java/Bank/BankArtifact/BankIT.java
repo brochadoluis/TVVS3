@@ -28,25 +28,25 @@ public class BankIT {
 
 	@Test
 	public void testDepositAmount() {
-		// use the functions depositAccount(Client,float) & getClientByName(String) from Bank 
-		bank.depositAccount(bank.getClientByName("Carlos"), 1000 );
-		assertEquals(1000, bank.getClientByName("Carlos").getAccount());
+		// use the functions depositAccount(Client,float) & getClientByName(String) from Bank
+		bank.depositAccount(bank.getClientByName("Carlos"), 1000f );
+		assertEquals(1000f, bank.getClientByName("Carlos").getAccount().getAmount(),floatTolerance);
 	}
 	
 	@Test	
 	public void testWithdrawAmount() {	
 		// use the functions depositAccount(Client), getClientByName(String) & withdrawClientAccount(Client) from Bank
-		bank.depositAccount(bank.getClientByName("Carlos"), 500);
-		bank.withdrawClientAccount(bank.getClientByName("Carlos"),250);
-		assertEquals(250, bank.getClientByName("Carlos").getAccount());
+		bank.depositAccount(bank.getClientByName("Carlos"), 500f);
+		bank.withdrawClientAccount(bank.getClientByName("Carlos"),250f);
+		assertEquals(250f, bank.getClientByName("Carlos").getAccount().getAmount(),floatTolerance);
 	}
 	
 	@Test
 	public void testTransactionBetweenUsers() {
 		// use the functions transfer(Client,Client,float) & getClientByName(String) from Bank
-		bank.depositAccount(bank.getClientByName("Carlos"), 5000);
-		bank.transfer(bank.getClientByName("Carlos"), bank.getClientByName("Melo"), 3000);
-		assertEquals(3000, bank.getClientByName("Melo").getAccount());
+		bank.depositAccount(bank.getClientByName("Carlos"), 5000f);
+		bank.transfer(bank.getClientByName("Carlos"), bank.getClientByName("Melo"), 3000f);
+		assertEquals(3000, bank.getClientByName("Melo").getAccount().getAmount(),floatTolerance);
 	}
 
 }
