@@ -29,19 +29,24 @@ public class BankIT {
 	@Test
 	public void testDepositAmount() {
 		// use the functions depositAccount(Client,float) & getClientByName(String) from Bank 
-		assertTrue(false);
+		bank.depositAccount(bank.getClientByName("Carlos"), 1000 );
+		assertEquals(1000, bank.getClientByName("Carlos").getAccount());
 	}
 	
 	@Test	
 	public void testWithdrawAmount() {	
 		// use the functions depositAccount(Client), getClientByName(String) & withdrawClientAccount(Client) from Bank
-		assertTrue(false);
+		bank.depositAccount(bank.getClientByName("Carlos"), 500);
+		bank.withdrawClientAccount(bank.getClientByName("Carlos"),250);
+		assertEquals(250, bank.getClientByName("Carlos").getAccount());
 	}
 	
 	@Test
 	public void testTransactionBetweenUsers() {
 		// use the functions transfer(Client,Client,float) & getClientByName(String) from Bank
-		assertTrue(false);
+		bank.depositAccount(bank.getClientByName("Carlos"), 5000);
+		bank.transfer(3000 , bank.getClientByName("Carlos"), bank.getClientByName("Melo"));
+		assertEquals(3000, bank.getClientByName("Melo").getAccount());
 	}
 
 }
